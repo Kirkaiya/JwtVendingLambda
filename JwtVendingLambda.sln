@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtVendingLambda", "JwtVendingLambda.csproj", "{369F04B8-1BFD-4178-83A9-283408D5D48B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{369F04B8-1BFD-4178-83A9-283408D5D48B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{369F04B8-1BFD-4178-83A9-283408D5D48B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{369F04B8-1BFD-4178-83A9-283408D5D48B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{369F04B8-1BFD-4178-83A9-283408D5D48B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2BCA1A4-8470-4E7D-93C7-7F200A393A14}
+	EndGlobalSection
+EndGlobal
