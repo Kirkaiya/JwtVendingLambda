@@ -1,4 +1,4 @@
-# JwtVendingLambda 
+# JwtVendingLambda (.NET Core Lambda function)
 **.NET Core 3.1**
 
 A Proof of Concept Lambda function that vends JSON Web Tokens (JWTs) signed with a RSA private key,
