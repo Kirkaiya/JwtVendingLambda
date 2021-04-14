@@ -58,13 +58,14 @@ some decisions. Some possibilities include:
     which are fronted by API Gateway (which validates the tokens and forwards them to APIs).
    * Pros: the modernized app doesn't need to worry about authorizing users, and it won't require any changes
         when you eventually migrate to Cognito.
-   * Cons: you would need to add the code to your legacy application to vend JWT tokens.
+   * Cons: you would need to add the code to your legacy .NET Fx application to vend JWT tokens.
 
 That last sub-bullet is where this proof-of-concept comes in.  Instead of adding the code to create
 and sign JWT tokens to your 15-year-old ASP.NET application, you could just add the 
 [AWSSDK.Lambda](https://www.nuget.org/packages/AWSSDK.Lambda/) NuGet package, and have the legacy 
 application invoke this Lambda function. You can pass whatever claims you want (username, email,
-phone numnber, roles, etc) and this function adds them as claims, and signs the JWT.
+phone number, roles, etc) and this function adds them as claims, and signs the JWT. You could even have multiple different
+applications use the same Lambda function to generate tokens. Go crazy!
 
 ## Instructions to set it up:
 
