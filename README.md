@@ -7,6 +7,9 @@ These tokens can be used with AWS API Gateway HTTP API JWT Authorizers.
 
 ## Background
 
+Note - you don't need to read the background if you just want to test the project out.
+Jump ahead down to the [instructions](#instructions) for that.
+
 ### Modernizing ASP.NET applications
 
 Sometimes companies have legacy ASP.NET applications (typically built on .NET Framework on Windows),
@@ -67,23 +70,81 @@ application invoke this Lambda function. You can pass whatever claims you want (
 phone number, roles, etc) and this function adds them as claims, and signs the JWT. You could even have multiple different
 applications use the same Lambda function to generate tokens. Go crazy!
 
-## Instructions to set it up:
+## <a name="instructions"/> Instructions to set it up:
 
 ### Create an RSA key pair
-TBD
+
+> *Note: if you already have an RSA keypair in base64 format, you can skip this.**
+
+From a Windows 10 or Linux command prompt/terminal, use ssh-keygen to create a key pair. The code I used 
+in the JwtBuilder class is hardcoded to RSA, but you can obviously change that.
+
+**`ssh-keygen -t rsa`**
+
+This prompts you to pick a filename, and to choose a passphrase. For just tesing out the JWT code,
+you can leave the passphrase blank (just hit 'enter' and 'enter' again for the second prompt).
+The response should look something like this (I ran this on Windows 10 and chose 'mynewrsakey' as the filename):
+
+```
+Generating public/private rsa key pair.
+Enter file in which to save the key (C:\Users\myuser/.ssh/id_rsa): mynewrsakey
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in mynewrsakey.
+Your public key has been saved in mynewrsakey.pub.
+The key fingerprint is:
+SHA256:QbqcIl2AKLTU3IusvmgLfZHLFFICOWvKirvFKdfBPwo ant\kirkdavi@PDX-07I62PC
+The key's randomart image is:
++---[RSA 2048]----+
+|o*+.+   .        |
+|* o= o o         |
+|.+o o + .        |
+|.. * * o .       |
+|+ o O + S        |
+|.= * *           |
+|* E = o          |
+|=* o . .         |
+|==o .            |
++----[SHA256]-----+
+```
+
+This creates two files, one is the private key that's base64-encoded, and has the header, 
+"`-----BEGIN RSA PRIVATE KEY-----`", and the other is the public key.
+However, that public key isn't in the form we want, so to get the public key in the format we want,
+you can use ssh-keygen again, on either Windows or Linux, which dumps the output to the terminal.
+Make sure to copy the output to a text file for later.
+
+**`ssh-keygen -f mynewrsakey.pub -e -m pem`**
+
+or (Linux only) you can use openssl to write it to a file, like this:
+
+**`openssl rsa -in mynewrsakey -RSAPublicKey_out`**
 
 ### Store the keys in AWS Secrets Manager
-TBD
+I coded this PoC app to pull the keys from Secrets Manager, with both public and private keys stored in a
+single "secret". Secrets Manager stores each "row" of a secret as a separate JSON node. You can use the AWS Secrets
+Manager console to create a new secret, set the type as "Other type of secrets", and add an additional row
+in the "Specify the key/value pairs" section. Give one the name `privateKey` and the other `publicKey` and
+paste the appropriate values ** *without the header and footer rows* ** into the values fields. See the screenshot below:
+
+> *Note: I deleted all the carriage-returns from the keys in a text editor first, but I haven't verified that this is necessary*.
+
+![Secrets-Manager-screenshot](docs/secrets-manager.png)
 
 ### Deploy and test the Lambda function
-TBD
+
+**TBD**
+
 ![screenshot of successful test in Lambda console](docs/console-test-succeeded.jpg)
 
 ### Host the JWKS.json and openid-configuration files in Amazon S3
-TBD
+
+**TBD**
 
 ### Create API Gateway HTTP API with JWT Authorizer
-TBD
+
+**TBD**
 
 ### Test it all out!
-TBD
+
+**TBD**

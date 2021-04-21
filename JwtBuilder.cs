@@ -37,8 +37,8 @@ namespace JwtVendingLambda
 
             switch (type) {
                 case JwtType.IdToken:
-                    claims.Add(new Claim("email", request.email));
-                    claims.Add(new Claim("phone_number", request.phoneNumber));
+                    claims.Add(new Claim("email", request.email ?? ""));
+                    claims.Add(new Claim("phone_number", request.phoneNumber ?? ""));
                     break;
 
                 case JwtType.AccessToken:
