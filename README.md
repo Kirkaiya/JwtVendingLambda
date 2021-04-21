@@ -74,7 +74,7 @@ applications use the same Lambda function to generate tokens. Go crazy!
 
 ### Create an RSA key pair
 
-> *Note: if you already have an RSA keypair in base64 format, you can skip this.**
+> *Note: if you already have an RSA keypair in base64 format, you can skip this.*
 
 From a Windows 10 or Linux command prompt/terminal, use ssh-keygen to create a key pair. The code I used 
 in the JwtBuilder class is hardcoded to RSA, but you can obviously change that.
