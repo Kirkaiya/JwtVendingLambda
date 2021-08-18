@@ -131,6 +131,19 @@ paste the appropriate values ** *without the header and footer rows* ** into the
 
 ![Secrets-Manager-screenshot](docs/secrets-manager.png)
 
+### Update Environment Variables
+
+The Lambda function code (in Function.cs) reads three Environment variables, which are used as string values in the generated JWT.  These values are:
+
+**1. Audience**
+TBD
+
+**2. Issuer**
+This is the base URL of wherever your "well-known" metadata is accessible. In this case, we're just using an S3 bucket (either already existing, or you can create a new one)
+ 
+**3. KeyId**
+An identifier for the key-pair used to encrypt the JWT. This can be any string you like, and it needs to match the "kid" value in the jwks.json file (see below). Currently, the project is set up to use *jwtvendsvckey01* as the KeyId (you can keep that value if you like for this sample use case).
+
 ### Deploy and test the Lambda function
 
 **TBD**

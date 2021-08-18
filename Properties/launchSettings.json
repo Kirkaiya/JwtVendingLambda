@@ -8,7 +8,7 @@
       "environmentVariables": {
         "Audience": "288seubnkumcdnj3odpftsvbjl",
         "KeyId": "jwtvendsvckey01",
-        "Issuer": "https://kirk-docs-share.s3-us-west-2.amazonaws.com"
+        "Issuer": "https://<your-bucket-name>.s3-us-west-2.amazonaws.com"
       }
     }
   }
